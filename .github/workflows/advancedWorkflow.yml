@@ -8,8 +8,15 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - name: firstJob script
-       shell: cmd
+       shell: bash
        run: echo Hello World! This is the first job
+     - name: checkout action
+       uses: actions/checkout@v6
+     - name: Print to Log
+       id: print-to-log
+       uses: actions/hello-world-javascript-action@main
+       with:
+         who-to-greet: ${{ github.actor }}
 
  secondjob:
    runs-on: ubuntu-latest
